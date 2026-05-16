@@ -4791,18 +4791,19 @@
       const email = document.getElementById('login-email').value;
       const password = document.getElementById('login-password').value;
       
-      // 离线模式降级
+      // 等待Supabase加载完成
       if (!supabaseReady || !supabase) {
-        const localProfile = DB.get('userProfile');
-        if (localProfile && localProfile.email === email) {
-          currentUser = { id: localProfile.id, email, user_metadata: { nickname: localProfile.nickname } };
-          showAuthLoading(false);
-          showToast('离线模式：数据仅保存在本地');
-          await onLoginSuccess(currentUser);
-        } else {
-          showAuthError('离线模式：未找到本地账号，请先注册');
+        showAuthLoading(true);
+        showToast('正在连接服务器...');
+        for (let i = 0; i < 50; i++) {
+          await new Promise(r => setTimeout(r, 100));
+          if (supabaseReady && supabase) break;
         }
-        return;
+        if (!supabaseReady || !supabase) {
+          showAuthLoading(false);
+          showAuthError('网络连接失败，请检查网络后重试');
+          return;
+        }
       }
       
       showAuthLoading(true);
@@ -4832,27 +4833,20 @@
       const email = document.getElementById('register-email').value;
       const password = document.getElementById('register-password').value;
       
-      // 离线模式：跳过Supabase，直接进入
+      // 等待Supabase加载完成
       if (!supabaseReady || !supabase) {
-        console.warn('Running in offline register mode');
-        const fakeUser = {
-          id: 'local_' + Date.now(),
-          email: email,
-          user_metadata: { nickname }
-        };
-        currentUser = fakeUser;
-        DB.set('userProfile', {
-          id: fakeUser.id,
-          nickname: nickname,
-          email: email,
-          growth_score: 0,
-          growth_level: '财务小白',
-          onboarding_done: false
-        });
-        showAuthLoading(false);
-        showToast('离线模式：数据仅保存在本地');
-        await onLoginSuccess(fakeUser);
-        return;
+        showAuthLoading(true);
+        showToast('正在连接服务器...');
+        // 等待最多5秒
+        for (let i = 0; i < 50; i++) {
+          await new Promise(r => setTimeout(r, 100));
+          if (supabaseReady && supabase) break;
+        }
+        if (!supabaseReady || !supabase) {
+          showAuthLoading(false);
+          showAuthError('网络连接失败，请检查网络后重试');
+          return;
+        }
       }
       
       showAuthLoading(true);
