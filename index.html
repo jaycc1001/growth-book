@@ -8313,14 +8313,25 @@
           console.warn('Auth state listener failed:', e);
         }
       } else {
-        // 离线模式 - 检查本地是否有登录信息
-        const localProfile = DB.get('userProfile');
-        if (localProfile) {
-          currentUser = { id: localProfile.id, email: localProfile.email, user_metadata: { nickname: localProfile.nickname } };
-          await onAuthSuccess(currentUser);
-        } else {
-          showAuthPage();
-        }
+        // Supabase还没加载完，等待5秒再试
+        showAuthPage();
+        let waited = 0;
+        const checkInterval = setInterval(async () => {
+          waited += 200;
+          if (supabaseReady && supabase) {
+            clearInterval(checkInterval);
+            try {
+              const { data: { session } } = await supabase.auth.getSession();
+              if (session?.user) {
+                currentUser = session.user;
+                await onAuthSuccess(session.user);
+              }
+            } catch (e) {
+              console.warn('Delayed auth check failed:', e);
+            }
+          }
+          if (waited >= 5000) clearInterval(checkInterval);
+        }, 200);
       }
     });
   </script>
