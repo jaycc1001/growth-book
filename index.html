@@ -11,29 +11,24 @@
   <!-- Chart.js CDN - 异步加载，不阻塞页面 -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" async></script>
   
-  <!-- Supabase JS SDK - 多CDN + 后备 -->
+  <!-- Supabase JS SDK - 本地加载优先，CDN后备 -->
   <script>
     window.supabaseReady = false;
     window._supabaseInit = function() {
       window.supabaseReady = true;
       if (typeof onSupabaseReady === 'function') onSupabaseReady();
     };
-    // 多CDN降级加载
     (function() {
-      var cdns = [
+      var sources = [
+        '/supabase.js',
         'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2',
-        'https://unpkg.com/@supabase/supabase-js@2',
-        'https://cdnjs.cloudflare.com/ajax/libs/supabase/2.49.4/supabase.min.js'
+        'https://unpkg.com/@supabase/supabase-js@2'
       ];
       var idx = 0;
       function tryNext() {
-        if (idx >= cdns.length) {
-          console.error('All Supabase CDNs failed');
-          // 所有CDN都失败时，标记为可用但未连接（不阻塞页面）
-          return;
-        }
+        if (idx >= sources.length) { console.error('All Supabase sources failed'); return; }
         var s = document.createElement('script');
-        s.src = cdns[idx]; s.async = true;
+        s.src = sources[idx]; s.async = true;
         s.onload = function() { window._supabaseInit(); };
         s.onerror = function() { idx++; tryNext(); };
         document.head.appendChild(s);
