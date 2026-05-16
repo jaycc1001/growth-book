@@ -6,6 +6,7 @@
   <meta name="theme-color" content="#1B2A4A">
   <meta name="description" content="成长记 - 个人财务管理平台，像公司一样经营你的人生">
   <title>成长记 - 个人财务管理平台</title>
+  <meta name="version" content="v1.2.3-inline-sdk">
   
   <!-- Chart.js CDN - 异步加载，不阻塞页面 -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" async></script>
@@ -4590,12 +4591,13 @@ var supabase=function(e){function t(e,t){var r={};for(var s in e)Object.prototyp
     
     function initSupabase() {
       try {
-        if (window.supabaseReady && window.supabase && window.supabase.createClient) {
+        // SDK已内联，window.supabase应始终可用
+        if (window.supabase && window.supabase.createClient) {
           supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
           supabaseReady = true;
-          console.log('✅ Supabase initialized');
+          console.log('✅ Supabase initialized (inline SDK)');
         } else {
-          console.warn('⚠️ Supabase CDN not loaded yet');
+          console.error('❌ SDK not found! window.supabase =', typeof window.supabase);
         }
       } catch (e) {
         console.error('❌ Supabase init failed:', e);
@@ -4607,8 +4609,9 @@ var supabase=function(e){function t(e,t){var r={};for(var s in e)Object.prototyp
       initSupabase();
     }
     
-    // 立即尝试初始化（如果CDN已经加载完）
+    // 立即初始化（SDK已内联，无需等待CDN）
     initSupabase();
+    console.log('🔍 supabaseReady =', supabaseReady, ', supabase =', typeof supabase);
 
     // ==================== 数据层 ====================
     const DB = {
@@ -4806,19 +4809,13 @@ var supabase=function(e){function t(e,t){var r={};for(var s in e)Object.prototyp
       const email = document.getElementById('login-email').value;
       const password = document.getElementById('login-password').value;
       
-      // 等待Supabase加载完成
+      // SDK已内联，如未初始化则重新尝试
       if (!supabaseReady || !supabase) {
-        showAuthLoading(true);
-        showToast('正在连接服务器...');
-        for (let i = 0; i < 100; i++) {
-          await new Promise(r => setTimeout(r, 100));
-          if (supabaseReady && supabase) break;
-        }
-        if (!supabaseReady || !supabase) {
-          showAuthLoading(false);
-          showAuthError('网络连接失败，请检查网络后重试');
-          return;
-        }
+        initSupabase();
+      }
+      if (!supabaseReady || !supabase) {
+        showAuthError('系统初始化失败，请刷新页面重试');
+        return;
       }
       
       showAuthLoading(true);
@@ -4848,20 +4845,13 @@ var supabase=function(e){function t(e,t){var r={};for(var s in e)Object.prototyp
       const email = document.getElementById('register-email').value;
       const password = document.getElementById('register-password').value;
       
-      // 等待Supabase加载完成
+      // SDK已内联，如未初始化则重新尝试
       if (!supabaseReady || !supabase) {
-        showAuthLoading(true);
-        showToast('正在连接服务器...');
-        // 等待最多5秒
-        for (let i = 0; i < 100; i++) {
-          await new Promise(r => setTimeout(r, 100));
-          if (supabaseReady && supabase) break;
-        }
-        if (!supabaseReady || !supabase) {
-          showAuthLoading(false);
-          showAuthError('网络连接失败，请检查网络后重试');
-          return;
-        }
+        initSupabase();
+      }
+      if (!supabaseReady || !supabase) {
+        showAuthError('系统初始化失败，请刷新页面重试');
+        return;
       }
       
       showAuthLoading(true);
