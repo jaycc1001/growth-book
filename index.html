@@ -103,7 +103,7 @@
     }
     
     .share-modal-btn.save {
-      background: var(--accent);
+      background: var(--gradient-brand);
       color: #fff;
     }
     
@@ -122,25 +122,26 @@
       align-items: center;
       gap: 6px;
       padding: 8px 16px;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      background: var(--gradient-brand);
       color: #fff;
       border: none;
-      border-radius: 20px;
+      border-radius: var(--radius-md);
       font-size: 13px;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.15s ease;
     }
     
     .share-card-btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(26,42,74,0.3);
+      opacity: 0.9;
     }
     
-    /* ==================== 每日财务简报 ==================== */
+    /* ==================== 每日财务简报 - 飞书风格 ==================== */
     .daily-brief-card {
       margin-bottom: 12px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: var(--gradient-card);
       color: #fff;
+      border-radius: var(--radius-md);
     }
     
     .daily-brief-header {
@@ -285,7 +286,7 @@
     .health-report-header {
       text-align: center;
       padding: 20px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: var(--gradient-card);
       color: #fff;
       border-radius: var(--radius-md) var(--radius-md) 0 0;
       margin: -20px -20px 20px -20px;
@@ -347,7 +348,7 @@
     
     .health-suggestion {
       padding: 12px;
-      background: rgba(255,149,0,0.1);
+      background: rgba(255, 149, 0, 0.1);
       border-left: 3px solid var(--warning);
       border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
       margin-top: 16px;
@@ -370,7 +371,7 @@
       width: 80px;
       height: 80px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+      background: var(--gradient-brand);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -541,7 +542,7 @@
     .biz-reservation-btn {
       width: 100%;
       padding: 14px;
-      background: var(--primary);
+      background: var(--gradient-brand);
       color: #fff;
       border: none;
       border-radius: var(--radius-md);
@@ -549,10 +550,12 @@
       font-weight: 600;
       cursor: pointer;
       margin-top: 8px;
+      transition: transform 0.15s ease, opacity 0.15s ease;
     }
     
     .biz-reservation-btn:active {
       opacity: 0.9;
+      transform: scale(0.98);
     }
     
     .biz-reservation-hint {
@@ -652,7 +655,7 @@
       -webkit-appearance: none;
       width: 20px;
       height: 20px;
-      background: var(--accent);
+      background: var(--primary);
       border-radius: 50%;
       cursor: pointer;
     }
@@ -673,7 +676,7 @@
     }
     
     .cashflow-sim-result.safe {
-      background: rgba(52,199,89,0.1);
+      background: rgba(34, 197, 94, 0.1);
       color: var(--success);
     }
     
@@ -741,7 +744,7 @@
     }
     
     .scale-bar.asset {
-      background: linear-gradient(180deg, var(--accent) 0%, var(--primary) 100%);
+      background: var(--gradient-brand);
     }
     
     .scale-bar.liability {
@@ -755,7 +758,7 @@
     }
     
     .scale-value.asset {
-      color: var(--accent);
+      color: var(--primary);
     }
     
     .scale-value.liability {
@@ -778,26 +781,45 @@
       color: var(--primary);
     }
     
-    /* ==================== CSS变量 ==================== */
+    /* ==================== CSS变量 - 飞书卡片风格 ==================== */
     :root {
-      --primary: #1B2A4A;
-      --primary-light: #2D4A6F;
+      /* 品牌色 - 朱砂红主色 */
+      --primary: #C41E3A;
+      --primary-light: #E8384F;
       --accent: #4A90D9;
       --accent-light: #6BA3E0;
-      --success: #34C759;
+      --success: #22C55E;
       --warning: #FF9500;
       --danger: #FF3B30;
-      --bg: #F2F3F7;
+      
+      /* 飞书卡片风格背景 */
+      --bg: #F5F6FA;
       --bg-card: #FFFFFF;
-      --text-primary: #1A1A1A;
-      --text-secondary: #666666;
-      --text-hint: #999999;
-      --border: #E5E5EA;
-      --shadow: 0 2px 12px rgba(0,0,0,0.08);
+      --bg-overlay: rgba(0, 0, 0, 0.02);
+      
+      /* 文字层级 */
+      --text-primary: #1F2329;
+      --text-secondary: #8F959E;
+      --text-hint: #C5C7CC;
+      
+      /* 分割线 */
+      --border: #E8E8E8;
+      
+      /* 阴影 - 飞书卡片轻阴影 */
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.04);
+      --shadow-hover: 0 2px 8px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.06);
+      --shadow-elevated: 0 4px 16px rgba(0, 0, 0, 0.08);
+      
+      /* 圆角 - 飞书卡片风格 */
       --radius-sm: 8px;
       --radius-md: 12px;
       --radius-lg: 16px;
       --safe-bottom: env(safe-area-inset-bottom, 0px);
+      
+      /* 渐变 */
+      --gradient-brand: linear-gradient(135deg, #C41E3A 0%, #E8384F 100%);
+      --gradient-card: linear-gradient(180deg, #C41E3A 0%, #D42A47 100%);
+      --gradient-gold: linear-gradient(135deg, #FFB800 0%, #FF9500 100%);
     }
 
     /* ==================== 基础样式 ==================== */
@@ -835,11 +857,12 @@
       font-weight: 500;
     }
 
-    .tag-green { background: rgba(52,199,89,0.12); color: var(--success); }
-    .tag-yellow { background: rgba(255,149,0,0.12); color: var(--warning); }
-    .tag-orange { background: rgba(255,149,0,0.18); color: #E67E00; }
-    .tag-red { background: rgba(255,59,48,0.12); color: var(--danger); }
-    .tag-blue { background: rgba(74,144,217,0.12); color: var(--accent); }
+    .tag-green { background: rgba(34, 197, 94, 0.12); color: var(--success); }
+    .tag-yellow { background: rgba(255, 149, 0, 0.12); color: var(--warning); }
+    .tag-orange { background: rgba(255, 149, 0, 0.18); color: #E67E00; }
+    .tag-red { background: rgba(255, 59, 48, 0.12); color: var(--danger); }
+    .tag-blue { background: rgba(74, 144, 217, 0.12); color: var(--accent); }
+    .tag-primary { background: rgba(196, 30, 58, 0.12); color: var(--primary); }
 
     .btn {
       display: inline-flex;
@@ -856,13 +879,13 @@
     }
 
     .btn-primary {
-      background: var(--accent);
+      background: var(--gradient-brand);
       color: white;
     }
 
     .btn-primary:active {
-      background: var(--accent-light);
       transform: scale(0.98);
+      opacity: 0.9;
     }
 
     .btn-secondary {
@@ -898,12 +921,12 @@
 
     .input:focus {
       outline: none;
-      border-color: var(--accent);
+      border-color: var(--primary);
     }
 
     .card {
       background: var(--bg-card);
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-md);
       box-shadow: var(--shadow);
       padding: 16px;
     }
@@ -918,14 +941,14 @@
       display: block;
     }
 
-    /* ==================== 登录/注册页面 ==================== */
+    /* ==================== 登录/注册页面 - 飞书风格 ==================== */
     #auth-page {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(180deg, var(--primary) 0%, var(--primary-light) 100%);
+      background: var(--gradient-brand);
       z-index: 2000;
       display: flex;
       flex-direction: column;
@@ -940,7 +963,7 @@
       background: white;
       border-radius: var(--radius-lg);
       padding: 32px 24px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+      box-shadow: var(--shadow-elevated);
     }
 
     .auth-logo {
@@ -949,12 +972,26 @@
     }
 
     .auth-logo-icon {
-      font-size: 56px;
-      margin-bottom: 12px;
+      width: 64px;
+      height: 64px;
+      background: var(--bg);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+    }
+
+    .auth-logo-icon svg {
+      width: 36px;
+      height: 36px;
+      stroke: var(--primary);
+      fill: none;
+      stroke-width: 1.5;
     }
 
     .auth-logo-text {
-      font-size: 28px;
+      font-size: 24px;
       font-weight: 700;
       color: var(--primary);
     }
@@ -986,9 +1023,9 @@
     }
 
     .auth-tab.active {
-      background: rgba(74,144,217,0.1);
-      border-color: var(--accent);
-      color: var(--accent);
+      background: rgba(196, 30, 58, 0.1);
+      border-color: var(--primary);
+      color: var(--primary);
     }
 
     .auth-form {
@@ -1093,14 +1130,14 @@
       to { transform: rotate(360deg); }
     }
 
-    /* ==================== Onboarding ==================== */
+    /* ==================== Onboarding - 飞书风格 ==================== */
     #onboarding {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(180deg, var(--primary) 0%, var(--primary-light) 100%);
+      background: var(--gradient-brand);
       z-index: 1000;
       display: none;
       flex-direction: column;
@@ -1119,8 +1156,8 @@
     .ob-progress-dot {
       width: 8px;
       height: 8px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.3);
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.3);
       transition: all 0.3s;
     }
 
@@ -1137,7 +1174,7 @@
     .ob-content {
       flex: 1;
       background: white;
-      border-radius: 24px 24px 0 0;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
       padding: 24px;
       overflow-y: auto;
     }
@@ -1197,12 +1234,12 @@
     }
 
     .ob-quick-tag:hover {
-      border-color: var(--accent);
-      color: var(--accent);
+      border-color: var(--primary);
+      color: var(--primary);
     }
 
     .ob-quick-tag.selected {
-      background: var(--accent);
+      background: var(--primary);
       color: white;
     }
 
@@ -1237,12 +1274,12 @@
     }
 
     .asset-type-item:hover {
-      border-color: var(--accent);
+      border-color: var(--primary);
     }
 
     .asset-type-item.selected {
-      background: rgba(74,144,217,0.1);
-      border-color: var(--accent);
+      background: rgba(196, 30, 58, 0.1);
+      border-color: var(--primary);
     }
 
     .asset-type-icon {
@@ -1315,50 +1352,70 @@
     }
 
     .type-selector input:checked + label {
-      background: var(--accent);
+      background: var(--primary);
       color: white;
     }
 
-    /* ==================== 底部导航 ==================== */
+    /* ==================== 底部导航 - 飞书风格 ==================== */
     .tab-bar {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      height: calc(60px + var(--safe-bottom));
+      height: calc(84px + var(--safe-bottom));
       background: white;
       border-top: 1px solid var(--border);
       display: flex;
-      padding-bottom: var(--safe-bottom);
+      justify-content: space-around;
+      padding: 8px 0 28px;
       z-index: 100;
     }
 
     .tab-item {
-      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 4px;
+      gap: 2px;
       color: var(--text-hint);
       font-size: 10px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: var(--radius-sm);
+      transition: all 0.15s ease;
       cursor: pointer;
-      transition: color 0.2s;
-      padding: 8px 0;
     }
 
     .tab-item.active {
-      color: var(--accent);
+      color: var(--primary);
+      background: rgba(196, 30, 58, 0.08);
+    }
+
+    .tab-item:active {
+      transform: scale(0.95);
     }
 
     .tab-icon {
-      font-size: 22px;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .tab-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
-    /* ==================== 首页 Dashboard ==================== */
+    /* ==================== 首页 Dashboard - 飞书卡片风格 ==================== */
     .dashboard-header {
-      text-align: center;
-      padding: 20px 0;
+      padding: 16px 0;
+      margin-bottom: 16px;
     }
 
     .dashboard-logo {
@@ -1368,11 +1425,24 @@
     }
 
     .financial-age-card {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      background: var(--gradient-card);
       border-radius: var(--radius-lg);
       padding: 20px;
       color: white;
       margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .financial-age-card::after {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 100px;
+      height: 100px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
     }
 
     .financial-age-badge {
@@ -1692,7 +1762,7 @@
     }
 
     .btn-remind {
-      background: var(--accent);
+      background: var(--primary);
       color: white;
     }
 
@@ -1740,7 +1810,7 @@
     }
 
     .quick-action-item:hover {
-      background: var(--accent);
+      background: var(--primary);
       color: white;
     }
 
@@ -1789,7 +1859,7 @@
     }
 
     .tab-switch-item.active {
-      background: var(--accent);
+      background: var(--primary);
       color: white;
     }
 
@@ -1831,37 +1901,57 @@
       color: var(--accent);
     }
 
-    /* ==================== 我的页面 ==================== */
+    /* ==================== 我的页面 - 飞书风格 ==================== */
     .profile-card {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-      border-radius: var(--radius-lg);
+      background: var(--gradient-card);
+      border-radius: var(--radius-md);
       padding: 24px;
       color: white;
       margin-bottom: 16px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .profile-card::after {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 120px;
+      height: 120px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
     }
 
     .profile-avatar {
-      width: 64px;
-      height: 64px;
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.2);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
       margin: 0 auto 12px;
+    }
+    
+    .profile-avatar svg {
+      width: 36px;
+      height: 36px;
+      stroke: white;
+      fill: none;
+      stroke-width: 1.5;
     }
 
     .profile-name {
-      font-size: 18px;
-      font-weight: 600;
+      font-size: 20px;
+      font-weight: 700;
       margin-bottom: 4px;
     }
 
     .profile-tagline {
-      font-size: 12px;
-      opacity: 0.8;
+      font-size: 13px;
+      opacity: 0.85;
     }
 
     .menu-section {
@@ -1877,17 +1967,18 @@
 
     .menu-list {
       background: var(--bg-card);
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-md);
       overflow: hidden;
+      box-shadow: var(--shadow);
     }
 
     .menu-item {
       display: flex;
       align-items: center;
       padding: 14px 16px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--bg);
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background 0.15s ease;
     }
 
     .menu-item:last-child {
@@ -1901,6 +1992,21 @@
     .menu-item-icon {
       font-size: 20px;
       margin-right: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+    }
+    
+    .menu-item-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .menu-item-text {
@@ -1934,17 +2040,18 @@
 
     .info-card {
       background: var(--bg-card);
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-md);
       padding: 16px;
       box-shadow: var(--shadow);
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.15s ease;
       position: relative;
       overflow: hidden;
     }
 
     .info-card:active {
       transform: scale(0.98);
+      box-shadow: var(--shadow-hover);
     }
 
     .info-card-header {
@@ -2023,7 +2130,7 @@
 
     .bill-card {
       background: var(--bg-card);
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-md);
       padding: 16px;
       box-shadow: var(--shadow);
     }
@@ -2098,20 +2205,22 @@
       margin-top: 12px;
     }
 
-    /* 催款按钮 */
+    /* 催款按钮 - 飞书风格胶囊按钮 */
     .remind-btn {
       padding: 6px 12px;
-      background: var(--accent);
-      color: white;
+      background: rgba(196, 30, 58, 0.1);
+      color: var(--primary);
       border: none;
-      border-radius: 6px;
-      font-size: 13px;
+      border-radius: var(--radius-md);
+      font-size: 12px;
+      font-weight: 500;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.15s ease;
     }
 
     .remind-btn:active {
       transform: scale(0.95);
+      background: rgba(196, 30, 58, 0.15);
     }
 
     /* ==================== 弹窗样式 ==================== */
@@ -2269,7 +2378,7 @@
     }
 
     .installment-toggle input:checked + .toggle-switch {
-      background: var(--accent);
+      background: var(--primary);
     }
 
     .installment-toggle input:checked + .toggle-switch::after {
@@ -3078,11 +3187,13 @@
   </style>
 </head>
 <body>
-  <!-- ==================== 登录/注册页面 ==================== -->
+  <!-- ==================== 登录/注册页面 - 飞书风格 ==================== -->
   <div id="auth-page">
     <div class="auth-container">
       <div class="auth-logo">
-        <div class="auth-logo-icon">📊</div>
+        <div class="auth-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
         <div class="auth-logo-text">成长记</div>
       </div>
       <div class="auth-slogan">人生需要像公司一样经营</div>
@@ -3327,30 +3438,48 @@
 
       <!-- 成长分卡片 -->
       <div class="financial-age-card">
-        <div class="financial-age-badge">📈 成长分</div>
+        <div class="financial-age-badge">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          成长分
+        </div>
         <div class="financial-age-title">你的财务状态</div>
         <div class="financial-age-value" id="fa-age">1000分</div>
         <div class="financial-age-stage" id="fa-stage">初创期</div>
-        <div class="slogan">💡 人生需要像公司一样经营</div>
+        <div class="slogan">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:4px;"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 017 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 017-7z"/></svg>
+          人生需要像公司一样经营
+        </div>
         <div class="share-btn-container">
-          <button class="share-card-btn" onclick="openShareModal()">🎨 分享我的成长分</button>
+          <button class="share-card-btn" onclick="openShareModal()">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            分享我的成长分
+          </button>
         </div>
       </div>
 
       <!-- 每日财务简报 -->
       <div class="card daily-brief-card" id="daily-brief">
         <div class="daily-brief-header">
-          <div class="daily-brief-title">📰 今日简报</div>
+          <div class="daily-brief-title">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6z"/></svg>
+            今日简报
+          </div>
           <div class="daily-brief-date" id="brief-date"></div>
         </div>
         <div class="daily-brief-items">
           <div class="daily-brief-item" id="brief-receivable" onclick="switchTab(1)">
             <div class="daily-brief-item-value" id="brief-rec-count">0</div>
-            <div class="daily-brief-item-label">📥 应收待收</div>
+            <div class="daily-brief-item-label">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              应收待收
+            </div>
           </div>
           <div class="daily-brief-item" id="brief-credit" onclick="switchTab(4); setTimeout(() => openSubPage('credits'), 100)">
             <div class="daily-brief-item-value" id="brief-credit-rate">0%</div>
-            <div class="daily-brief-item-label">💳 授信使用</div>
+            <div class="daily-brief-item-label">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+              授信使用
+            </div>
           </div>
           <div class="daily-brief-item" id="brief-balance" onclick="switchTab(3)">
             <div class="daily-brief-item-value" id="brief-month-balance">¥0</div>
@@ -3385,10 +3514,16 @@
 
       <!-- 简化资产负债表 -->
       <div class="card balance-sheet">
-        <div class="balance-sheet-title">📊 简化资产负债表</div>
+        <div class="balance-sheet-title">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          简化资产负债表
+        </div>
         <div class="balance-sheet-grid">
           <div class="balance-sheet-col">
-            <div class="balance-sheet-col-header">💰 资产</div>
+            <div class="balance-sheet-col-header">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+              资产
+            </div>
             <div class="balance-sheet-item">
               <span class="balance-sheet-item-name">现金</span>
               <span class="balance-sheet-item-value amount" id="bs-cash">¥0</span>
@@ -3403,7 +3538,10 @@
             </div>
           </div>
           <div class="balance-sheet-col">
-            <div class="balance-sheet-col-header">💳 负债</div>
+            <div class="balance-sheet-col-header">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+              负债
+            </div>
             <div class="balance-sheet-item">
               <span class="balance-sheet-item-name">应付待确认</span>
               <span class="balance-sheet-item-value amount" id="bs-payable">¥0</span>
@@ -3493,17 +3631,26 @@
 
       <!-- 到期提醒 -->
       <div class="card reminder-card">
-        <div class="reminder-title">⏰ 未来7天到期提醒</div>
+        <div class="reminder-title">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          未来7天到期提醒
+        </div>
         
         <div class="reminder-section">
-          <div class="reminder-section-title">📥 应收即将到账</div>
+          <div class="reminder-section-title">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            应收即将到账
+          </div>
           <div id="receivable-reminders">
             <div class="empty-state">暂无应收到期提醒</div>
           </div>
         </div>
         
         <div class="reminder-section">
-          <div class="reminder-section-title">📤 应付即将到期</div>
+          <div class="reminder-section-title">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 10H18a2 2 0 0 1 0-4"/></svg>
+            应付即将到期
+          </div>
           <div id="payable-reminders">
             <div class="empty-state">暂无应付到期提醒</div>
           </div>
@@ -3512,22 +3659,33 @@
 
       <!-- 快捷入口 -->
       <div class="quick-actions">
-        <div class="quick-actions-title">⚡ 快捷入口</div>
+        <div class="quick-actions-title">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          快捷入口
+        </div>
         <div class="quick-actions-grid">
           <div class="quick-action-item" onclick="switchTab(4); setTimeout(() => openSubPage('consumption'), 100)">
-            <span class="quick-action-icon">📸</span>
+            <span class="quick-action-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            </span>
             <span class="quick-action-text">上传消费</span>
           </div>
           <div class="quick-action-item" onclick="switchTab(1)">
-            <span class="quick-action-icon">📥</span>
+            <span class="quick-action-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </span>
             <span class="quick-action-text">添加应收</span>
           </div>
           <div class="quick-action-item" onclick="switchTab(2)">
-            <span class="quick-action-icon">📤</span>
+            <span class="quick-action-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 10H18a2 2 0 0 1 0-4"/></svg>
+            </span>
             <span class="quick-action-text">添加应付</span>
           </div>
           <div class="quick-action-item" onclick="switchTab(4); setTimeout(() => openSubPage('calibration'), 100)">
-            <span class="quick-action-icon">📋</span>
+            <span class="quick-action-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+            </span>
             <span class="quick-action-text">月末校准</span>
           </div>
         </div>
@@ -3537,7 +3695,10 @@
     <!-- 页面2: 应收 -->
     <div class="page" id="page-receivable">
       <div class="page-header">
-        <div class="page-title">📥 应收管理</div>
+        <div class="page-title">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:8px;"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          应收管理
+        </div>
       </div>
       
       <div class="tab-switch">
@@ -3557,7 +3718,10 @@
     <!-- 页面3: 应付 -->
     <div class="page" id="page-payable">
       <div class="page-header">
-        <div class="page-title">📤 应付管理</div>
+        <div class="page-title">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:8px;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 10H18a2 2 0 0 1 0-4"/></svg>
+          应付管理
+        </div>
       </div>
       
       <div class="tab-switch">
@@ -3577,7 +3741,10 @@
     <!-- 页面4: 现金流 -->
     <div class="page" id="page-cashflow">
       <div class="page-header">
-        <div class="page-title">📈 未来现金流</div>
+        <div class="page-title">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:8px;"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          未来现金流
+        </div>
       </div>
       
       <!-- 顶部概览 -->
@@ -3604,7 +3771,10 @@
 
       <!-- 6个月现金流预测图 -->
       <div class="card fc-chart-card">
-        <div class="fc-chart-title">💹 未来6个月现金流预测</div>
+        <div class="fc-chart-title">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          未来6个月现金流预测
+        </div>
         <div class="fc-chart-container">
           <canvas id="fc-chart"></canvas>
         </div>
@@ -3646,14 +3816,20 @@
       <!-- 断粮预警 -->
       <div class="fc-warning-list" id="fc-warning-list" style="display:none;">
         <div class="card">
-          <div class="fc-chart-title" style="color:var(--danger);">⚠️ 断粮预警</div>
+          <div class="fc-chart-title" style="color:var(--danger);">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          断粮预警
+        </div>
           <div id="fc-warning-items"></div>
         </div>
       </div>
 
       <!-- 月度明细 -->
       <div class="card">
-        <div class="fc-chart-title">📅 月度明细</div>
+        <div class="fc-chart-title">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          月度明细
+        </div>
         <div class="fc-month-list" id="fc-month-list"></div>
       </div>
     </div>
@@ -3661,11 +3837,16 @@
     <!-- 页面5: 我的 -->
     <div class="page" id="page-profile">
       <div class="page-header">
-        <div class="page-title">👤 我的</div>
+        <div class="page-title">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:8px;"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+          我的
+        </div>
       </div>
       
       <div class="profile-card">
-        <div class="profile-avatar">👤</div>
+        <div class="profile-avatar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+        </div>
         <div class="profile-name" id="profile-name">成长记用户</div>
         <div class="profile-tagline">人生需要像公司一样经营</div>
       </div>
@@ -3674,12 +3855,16 @@
         <div class="menu-section-title">资产管理</div>
         <div class="menu-list">
           <div class="menu-item" onclick="openSubPage('assets')">
-            <span class="menu-item-icon">🏠</span>
+            <span class="menu-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>
+            </span>
             <span class="menu-item-text">资产详情</span>
             <span class="menu-item-arrow">›</span>
           </div>
           <div class="menu-item" onclick="openSubPage('credits')">
-            <span class="menu-item-icon">💳</span>
+            <span class="menu-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+            </span>
             <span class="menu-item-text">授信管理</span>
             <span class="menu-item-arrow">›</span>
           </div>
@@ -3690,12 +3875,16 @@
         <div class="menu-section-title">收支记录</div>
         <div class="menu-list">
           <div class="menu-item" onclick="openSubPage('consumption')">
-            <span class="menu-item-icon">🧾</span>
+            <span class="menu-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+            </span>
             <span class="menu-item-text">消费结构上传</span>
             <span class="menu-item-arrow">›</span>
           </div>
           <div class="menu-item" onclick="openSubPage('nonRecurring')">
-            <span class="menu-item-icon">📊</span>
+            <span class="menu-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+            </span>
             <span class="menu-item-text">非经常性损益</span>
             <span class="menu-item-arrow">›</span>
           </div>
@@ -3706,22 +3895,30 @@
         <div class="menu-section-title">目标与建议</div>
         <div class="menu-list">
           <div class="menu-item" onclick="openSubPage('goals')">
-            <span class="menu-item-icon">🎯</span>
+            <span class="menu-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            </span>
             <span class="menu-item-text">财务目标</span>
             <span class="menu-item-arrow">›</span>
           </div>
           <div class="menu-item" onclick="openSubPage('goalProgress')">
-            <span class="menu-item-icon">📈</span>
+            <span class="menu-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </span>
             <span class="menu-item-text">达成率演化</span>
             <span class="menu-item-arrow">›</span>
           </div>
           <div class="menu-item" onclick="openSubPage('suggestions')">
-            <span class="menu-item-icon">💡</span>
+            <span class="menu-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 017 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 017-7z"/></svg>
+            </span>
             <span class="menu-item-text">调整建议</span>
             <span class="menu-item-arrow">›</span>
           </div>
           <div class="menu-item" onclick="openMonthlyHealthReport()">
-            <span class="menu-item-icon">📊</span>
+            <span class="menu-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+            </span>
             <span class="menu-item-text">月度体检</span>
             <span class="menu-item-arrow">›</span>
           </div>
@@ -3732,23 +3929,31 @@
         <div class="menu-section-title">工具</div>
         <div class="menu-list">
           <div class="menu-item" onclick="openBizReservation()" style="border-left: 3px solid var(--primary);">
-            <span class="menu-item-icon">🏢</span>
+            <span class="menu-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/></svg>
+            </span>
             <span class="menu-item-text">经营版预约</span>
             <span class="menu-item-badge">new</span>
             <span class="menu-item-arrow">›</span>
           </div>
           <div class="menu-item" onclick="openSubPage('calibration')">
-            <span class="menu-item-icon">📋</span>
+            <span class="menu-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+            </span>
             <span class="menu-item-text">月末校准</span>
             <span class="menu-item-arrow">›</span>
           </div>
           <div class="menu-item" onclick="exportData()">
-            <span class="menu-item-icon">📤</span>
+            <span class="menu-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            </span>
             <span class="menu-item-text">数据导出</span>
             <span class="menu-item-arrow">›</span>
           </div>
           <div class="menu-item" onclick="resetData()" style="color:var(--danger);">
-            <span class="menu-item-icon">🔄</span>
+            <span class="menu-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+            </span>
             <span class="menu-item-text">重置数据</span>
             <span class="menu-item-arrow">›</span>
           </div>
@@ -3759,7 +3964,9 @@
         <div class="menu-section-title">账户</div>
         <div class="menu-list">
           <div class="menu-item" onclick="handleLogout()" style="color:var(--danger);">
-            <span class="menu-item-icon">🚪</span>
+            <span class="menu-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            </span>
             <span class="menu-item-text">退出登录</span>
             <span class="menu-item-arrow">›</span>
           </div>
@@ -3770,7 +3977,9 @@
         <div class="menu-section-title">关于</div>
         <div class="menu-list">
           <div class="menu-item" onclick="openSubPage('about')">
-            <span class="menu-item-icon">ℹ️</span>
+            <span class="menu-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            </span>
             <span class="menu-item-text">关于成长记</span>
             <span class="menu-item-arrow">›</span>
           </div>
@@ -3787,7 +3996,10 @@
       </div>
       
       <div class="asset-summary">
-        <div class="asset-summary-title">📊 资产分布</div>
+        <div class="asset-summary-title">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          资产分布
+        </div>
         <div class="asset-pie-container">
           <canvas id="asset-pie-chart"></canvas>
         </div>
@@ -4003,26 +4215,36 @@
     </div>
   </div>
 
-  <!-- ==================== 底部导航 ==================== -->
+  <!-- ==================== 底部导航 - 飞书风格 ==================== -->
   <nav class="tab-bar" id="tab-bar" style="display:none;">
     <div class="tab-item active" data-page="home" onclick="switchTab(0)">
-      <span class="tab-icon">🏠</span>
+      <span class="tab-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>
+      </span>
       <span>首页</span>
     </div>
     <div class="tab-item" data-page="receivable" onclick="switchTab(1)">
-      <span class="tab-icon">📥</span>
+      <span class="tab-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </span>
       <span>应收</span>
     </div>
     <div class="tab-item" data-page="payable" onclick="switchTab(2)">
-      <span class="tab-icon">📤</span>
+      <span class="tab-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 10H18a2 2 0 0 1 0-4"/></svg>
+      </span>
       <span>应付</span>
     </div>
     <div class="tab-item" data-page="cashflow" onclick="switchTab(3)">
-      <span class="tab-icon">📈</span>
+      <span class="tab-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </span>
       <span>现金流</span>
     </div>
     <div class="tab-item" data-page="profile" onclick="switchTab(4)">
-      <span class="tab-icon">👤</span>
+      <span class="tab-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+      </span>
       <span>我的</span>
     </div>
   </nav>
